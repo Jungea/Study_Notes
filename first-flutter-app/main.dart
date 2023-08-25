@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 
+/**
+ * https://codelabs.developers.google.com/codelabs/flutter-codelab-first
+ */
 void main() {
   runApp(MyApp());
 }
@@ -33,7 +36,6 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
-  var hong = "Hi";
   
   void getNext() {
     current = WordPair.random();
@@ -47,13 +49,13 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
+    var pair = appState.current;
 
     return Scaffold(  //최상위 위젯
       body: Column(  //레이아웃 위젯
         children: [
           Text('A random AWESOME idea:'),
-          Text(appState.hong),
-          Text(appState.current.asLowerCase),
+          Text(pair.asLowerCase),
           ElevatedButton(
             onPressed: () {
               appState.getNext();
